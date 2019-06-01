@@ -1,0 +1,5 @@
+#Virtual environemnts 
+venv/
+
+#Pycharm stuff
+.idea/*
