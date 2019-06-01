@@ -2,4 +2,5 @@
 venv/
 
 #Pycharm stuff
-.idea/*
+.idea/
+__pycache__/

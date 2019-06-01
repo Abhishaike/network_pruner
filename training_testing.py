@@ -32,10 +32,10 @@ def get_network_architecture():
     '''
     mnist_input = Input(shape=(28,28))
     flattened_mnist_input = Flatten()(mnist_input)
-    hidden_layer_1 = Dense(1000, activation='relu',name='Layer_1', use_bias = False)(flattened_mnist_input)
-    hidden_layer_2 = Dense(1000, activation='relu',name='Layer_2', use_bias = False)(hidden_layer_1)
-    hidden_layer_3 = Dense(500, activation='relu', name='Layer_3', use_bias = False)(hidden_layer_2)
-    hidden_layer_4 = Dense(200, activation='relu', name ='Layer_4', use_bias = False)(hidden_layer_3)
+    hidden_layer_1 = Dense(1000, activation='relu',name='Layer_1',kernel_regularizer='l2', use_bias = False)(flattened_mnist_input)
+    hidden_layer_2 = Dense(1000, activation='relu',name='Layer_2',kernel_regularizer='l2', use_bias = False)(hidden_layer_1)
+    hidden_layer_3 = Dense(500, activation='relu', name='Layer_3',kernel_regularizer='l2', use_bias = False)(hidden_layer_2)
+    hidden_layer_4 = Dense(200, activation='relu', name ='Layer_4',kernel_regularizer='l2',use_bias = False)(hidden_layer_3)
     classification = Dense(10, activation='softmax')(hidden_layer_4)
     model_architecture = Model(inputs=mnist_input, outputs=classification)
     return model_architecture
@@ -82,7 +82,7 @@ def plot_accuracy(percentile_list, percentile_name, weight_prune_acc, neuron_pru
     plt.xlabel('% Pruned')
     plt.ylabel('Accuracy')
     plt.legend(loc='lower left')
-    plt.savefig(percentile_name + '_nol2.png')
+    plt.savefig(percentile_name + '.png')
     plt.close()
 
 x_train, y_train, x_test, y_test = load_mnist()
